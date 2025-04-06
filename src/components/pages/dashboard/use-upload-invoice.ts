@@ -41,6 +41,7 @@ export const useUploadInvoice = ({ loadInvoices }: UploadInvoiceProps) => {
         throw new Error(`Error: ${response.statusText}`);
       }
       await response.json();
+      
       loadInvoices();
     } catch (err: any) {
       console.error('Erro ao fazer upload do PDF:', err);

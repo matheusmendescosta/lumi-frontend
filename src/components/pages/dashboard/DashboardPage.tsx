@@ -10,6 +10,7 @@ const DashboardPage = () => {
 
   return (
     <div className="p-4 space-y-6">
+      <h1>Informações da última fatura enviada</h1>
       <CardSection
         installationNumber={lastInvoice?.installationNumber}
         mouthReference={lastInvoice?.mouthReference}
