@@ -1,4 +1,4 @@
-import { Home, Receipt } from 'lucide-react';
+import { Home, Receipt } from "lucide-react";
 
 import {
   Sidebar,
@@ -9,17 +9,18 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from '@/components/ui/sidebar';
+} from "@/components/ui/sidebar";
+import Image from "next/image";
 
 const items = [
   {
-    title: 'Home',
-    url: '/',
+    title: "Home",
+    url: "/",
     icon: Home,
   },
   {
-    title: 'Invoice',
-    url: '/invoices',
+    title: "Invoice",
+    url: "/invoices",
     icon: Receipt,
   },
 ];
@@ -29,7 +30,9 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>
+            <Image className="dark:invert" alt="logo lumi" src="/lumiLogo.svg" width={50} height={50} />
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (

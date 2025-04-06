@@ -9,6 +9,9 @@ import { ModeToggle } from '@/components/layout/mode-toggle';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: '/lumiLogo.svg',
+  },
   title: 'Lumi - Matheus Mendes',
   description: 'Desafio Técnico - Lumi',
 };
