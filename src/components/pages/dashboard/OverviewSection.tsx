@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/card';
 import { ChartConfig, ChartContainer } from '@/components/ui/chart';
 import { FileText } from 'lucide-react';
-import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts';
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 import useInvoices from '../use-invoices';
 import { useUploadInvoice } from './use-upload-invoice';
 import useListMouthReferenceOrder from './use-list-mouth-reference-order';
@@ -44,18 +44,18 @@ const OverviewSection = () => {
 
   const recentInvoices = invoices.slice(-6);
 
-  const mouthReference = invoiceMouthOrder?.map((invoice) => ({
-    month: invoice.mouthReference || 'N/A',
-    desktop: parseFloat(invoice.paymentValue) || 0,
-  })) || [];
-
+  const mouthReference =
+    invoiceMouthOrder?.map((invoice) => ({
+      month: invoice.mouthReference || 'N/A',
+      desktop: parseFloat(invoice.paymentValue) || 0,
+    })) || [];
 
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <Card>
           <CardHeader>
-            <CardTitle>Overview</CardTitle>
+            <CardTitle>Valores dos últimos meses</CardTitle>
           </CardHeader>
           <CardContent>
             <ChartContainer
@@ -74,6 +74,12 @@ const OverviewSection = () => {
                   axisLine={false}
                   tickFormatter={(value) => value.slice(0, 3)}
                 />
+                <YAxis
+                  tickLine={false}
+                  tickMargin={10}
+                  axisLine={false}
+                  width={40}
+                />
                 <Bar
                   dataKey="desktop"
                   fill={chartConfig.desktop.color}
@@ -85,8 +91,8 @@ const OverviewSection = () => {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Ultimos uploads</CardTitle>
-            <CardDescription>Lista dos ultimos uploads.</CardDescription>
+            <CardTitle>Últimos uploads</CardTitle>
+            <CardDescription>Lista dos últimos uploads.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             {recentInvoices.map((invoice, index) => (
