@@ -1,13 +1,20 @@
 'use client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BadgeDollarSign, CalendarSearch, Inbox, User } from 'lucide-react';
-import useInvoices from '../use-invoices';
 
-const CardSection = () => {
-  const { invoices } = useInvoices();
-  const lastInvoice = invoices[invoices.length - 1];
+interface CardSectionProps {
+  clientNumber: string;
+  installationNumber: string;
+  mouthReference: string;
+  paymentValue: string;
+}
 
-
+const CardSection = ({
+  clientNumber,
+  installationNumber,
+  mouthReference,
+  paymentValue,
+}: CardSectionProps) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       <Card>
@@ -18,7 +25,7 @@ const CardSection = () => {
           <User className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{lastInvoice?.clientNumber}</div>
+          <div className="text-2xl font-bold">{clientNumber}</div>
           <p className="text-xs text-muted-foreground">Numero do cliente</p>
         </CardContent>
       </Card>
@@ -30,9 +37,7 @@ const CardSection = () => {
           <Inbox className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">
-            {lastInvoice?.installationNumber}
-          </div>
+          <div className="text-2xl font-bold">{installationNumber}</div>
           <p className="text-xs text-muted-foreground">Número da instalação</p>
         </CardContent>
       </Card>
@@ -44,9 +49,7 @@ const CardSection = () => {
           <CalendarSearch className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">
-            {lastInvoice?.mouthReference}
-          </div>
+          <div className="text-2xl font-bold">{mouthReference}</div>
           <p className="text-xs text-muted-foreground">Mês de referência</p>
         </CardContent>
       </Card>
@@ -56,9 +59,7 @@ const CardSection = () => {
           <BadgeDollarSign className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">
-            R$ {lastInvoice?.paymentValue}
-          </div>
+          <div className="text-2xl font-bold">R$ {paymentValue}</div>
           <p className="text-xs text-muted-foreground">Valor total a pagar</p>
         </CardContent>
       </Card>
