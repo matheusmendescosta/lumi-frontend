@@ -14,12 +14,12 @@ import Image from "next/image";
 
 const items = [
   {
-    title: "Home",
+    title: "Inicio",
     url: "/",
     icon: Home,
   },
   {
-    title: "Invoice",
+    title: "Faturas",
     url: "/invoices",
     icon: Receipt,
   },
