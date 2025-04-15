@@ -21,6 +21,7 @@ export const useUploadInvoice = ({ loadInvoices }: UploadInvoiceProps) => {
 
     try {
       if (file.type !== "application/pdf") {
+        //todo: toast.error
         throw new Error("Somente arquivos PDF são permitidos.");
       }
 
