@@ -39,10 +39,12 @@ export const useUploadInvoice = ({ loadInvoices }: UploadInvoiceProps) => {
       );
       const result = await response.json();
       if (!response.ok) {
+        //todo: toast.error(result.error);
         throw new Error(result.error || "An unexpected error occurred.");
       }
       loadInvoices();
     } catch (error: any) {
+      //todo: toast.error(result.error);
       setError(error.message || "An unexpected error occurred.");
     } finally {
       setLoading(false);
